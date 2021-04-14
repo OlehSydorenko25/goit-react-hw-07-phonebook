@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import contactsOperations from '../../redux/contacts-operations';
+import selectors from '../../redux/contacts-selectors';
 import styles from './ContactList.module.css';
 
 class ContactList extends Component {
@@ -19,7 +20,10 @@ class ContactList extends Component {
             <li key={id} className={styles.contact}>
               <span>{name}: </span>
               <span>{number}</span>
-              <button onClick={() => this.props.onDeleteContact(id)}>
+              <button
+                type="button"
+                onClick={() => this.props.onDeleteContact(id)}
+              >
                 Delete
               </button>
             </li>
@@ -30,19 +34,10 @@ class ContactList extends Component {
   }
 }
 
-const getVisibleContacts = (arrContacts, filter) => {
-  const normalizedFilter = filter.toLowerCase();
-
-  return arrContacts.filter(({ name }) =>
-    name.toLowerCase().includes(normalizedFilter),
-  );
-};
-
 const mapStateToProps = state => {
-  const { contacts, filter } = state.phonebook;
-  const visidleContacts = getVisibleContacts(contacts, filter);
-  return { contactList: visidleContacts };
-  // return { contactList: contacts };
+  return {
+    contactList: selectors.getVisibleContacts(state),
+  };
 };
 
 const mapDispatchToProps = dispatch => ({
