@@ -1,24 +1,3 @@
 {
-  "contacts": [
-    {
-      "name": "awdada",
-      "number": "w1e123",
-      "id": 3
-    },
-    {
-      "name": "qwe",
-      "number": "123",
-      "id": 5
-    },
-    {
-      "name": "qwe",
-      "number": "123",
-      "id": 6
-    },
-    {
-      "name": "qwe",
-      "number": "123",
-      "id": 7
-    }
-  ]
+  "contacts": []
 }
